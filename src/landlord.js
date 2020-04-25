@@ -96,14 +96,15 @@ class Landlord extends Component {
       negotiable,
     } = this.state;
 
+    let neg
     if(negotiable == "yes")
-    negotiable = true
+    neg = true
     else
-    negotiable = false
+    neg = false
 
     // contract = contract.eth
     const accounts = await web3.eth.getAccounts();
-    const x = await contract.methods.setFlatInfo(landlordName,email,phoneno,Houseaddress,city,rentAmount,BHK,securityFee,negotiable)
+    const x = await contract.methods.setFlatInfo(landlordName,email,phoneno,Houseaddress,city,rentAmount,BHK,securityFee,neg)
     .send({from: accounts[0]})
     // const fl = await contract.methods.flats(0).call();
     console.log(x)

@@ -18,9 +18,9 @@ class Tenant extends Component {
       username: "sid",
       phone: 312421,
       city: "agra",
-      start: 2,
-      end: 5,
-      bhk: 2,
+      start: 5,
+      end: 10,
+      bhk: 1,
       duration: 1,
       flats: [],
       message: ""
@@ -82,16 +82,15 @@ class Tenant extends Component {
   bookFlat = async (securityFee,landlordAddress) => {
 
       const accounts = await web3.eth.getAccounts();
-      const x = await contract.methods.bookFlat("0x4528FA8Ff8A488bAa4A94C1Be52817EcBdAD1F34").send({
+      const x = await contract.methods.bookFlat(landlordAddress).send({
           from: accounts[0],
-          
           value:web3.utils.toWei(securityFee.toString(), 'ether')
       })
 
       this.setState({
           meassage: "Congratulation Flat Booked !"
       })
-  } 
+  }
 
 
   
@@ -132,9 +131,9 @@ class Tenant extends Component {
       duration,
     } = this.state;
 
-    // const accounts = await web3.eth.getAccounts();
-    // const x = await contract.methods.setTenant(username, email, phone, city, start, end, bhk, duration)
-    // .send({from: accounts[0]})
+    const accounts = await web3.eth.getAccounts();
+    const x = await contract.methods.setTenant(username, email, phone, city, start, end, bhk, duration)
+    .send({from: accounts[0]})
     // const fl = await contract.methods.tenant(0).call();
     // console.log(fl)
 
@@ -210,7 +209,7 @@ class Tenant extends Component {
             <br />
             <label>Range Start: </label>
             {/* <br /> */}
-            <select value={this.state.rangeStart} onChange={this.changeRange}>
+            <select value={this.state.rangeStart} onChange={this.changeRangeStart}>
               <option value="5">5K</option>
               <option value="10">10K</option>
               <option value="25">25K</option>
@@ -224,7 +223,7 @@ class Tenant extends Component {
           
             <label className="ml-4">Range End: </label>
             {/* <br /> */ }
-            <select value={this.state.rangeEnd} onChange={this.changeRange}>
+            <select value={this.state.rangeEnd} onChange={this.changeRangeEnd}>
               <option value="10">10K</option>
               <option value="25">25K</option>
               <option value="50">50K</option>
