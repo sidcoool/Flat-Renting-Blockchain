@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Landlord from './landlord'
 import Tenant from './Tenant'
+//import './CSS/home.css'
 
 
 let element 

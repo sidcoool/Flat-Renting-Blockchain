@@ -1,5 +1,5 @@
 import web3 from './web3'
-const address = "0x20b97cddd47d50d42dc75a5a7e2ab31079a4a431"
+const address = "0x7a470a28e19e62fcd92cf3714259d7f0d57a048c"
 
 const abi = [
 	{
@@ -14,15 +14,6 @@ const abi = [
 		"outputs": [],
 		"payable": true,
 		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "searchFlats",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -62,10 +53,6 @@ const abi = [
 			},
 			{
 				"name": "negotiable",
-				"type": "bool"
-			},
-			{
-				"name": "furnished",
 				"type": "bool"
 			}
 		],
@@ -168,7 +155,7 @@ const abi = [
 				"type": "bool"
 			},
 			{
-				"name": "furnished",
+				"name": "booked",
 				"type": "bool"
 			}
 		],
@@ -227,54 +214,8 @@ const abi = [
 				"type": "bool"
 			},
 			{
-				"name": "furnished",
+				"name": "booked",
 				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "stenant",
-		"outputs": [
-			{
-				"name": "tenantAddress",
-				"type": "address"
-			},
-			{
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"name": "email",
-				"type": "string"
-			},
-			{
-				"name": "phoneno",
-				"type": "int256"
-			},
-			{
-				"name": "city",
-				"type": "string"
-			},
-			{
-				"name": "startRentRange",
-				"type": "int256"
-			},
-			{
-				"name": "endRentRange",
-				"type": "int256"
-			},
-			{
-				"name": "BHK",
-				"type": "int256"
-			},
-			{
-				"name": "durationStay",
-				"type": "int256"
 			}
 		],
 		"payable": false,
@@ -327,7 +268,7 @@ const abi = [
 				"type": "bool"
 			},
 			{
-				"name": "furnished",
+				"name": "booked",
 				"type": "bool"
 			}
 		],

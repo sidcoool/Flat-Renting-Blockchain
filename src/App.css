@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  /* background-color: red;
+  background-image: linear-gradient(red, yellow); */
+  font-weight: 700;
+  font-size: 18px;
+  font-family: sans-serif;
+  background:
+        linear-gradient(red, transparent),
+        linear-gradient(to top left, lime, transparent),
+        linear-gradient(to top right, blue, transparent);
+    background-blend-mode: screen;
 }
 
 .App-logo {

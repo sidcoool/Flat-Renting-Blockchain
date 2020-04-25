@@ -1,0 +1,16 @@
+.primary{
+    color: orange;
+
+}
+
+.body {
+    background-color: green;
+}
+
+.font-xl{
+    font-size: 72px;
+}
+
+.searchField {
+    display: inline-block;
+}

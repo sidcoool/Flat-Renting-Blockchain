@@ -1,4 +1,6 @@
 pragma solidity ^0.4.17;
+// this is updated one
+// also edit on remix for better debugging
 
 contract rent{
    
@@ -72,34 +74,33 @@ contract rent{
    
         }
    
-    function searchFlats() public returns (FlatInfo[])
+    function searchFlats() public
     {
        uint j=0;
    
    
     for(uint i=0;i<tenant.length;i++)
     {
-    if(tenant[i].tenantAddress == msg.sender)
-    {
-    stenant = tenant[i];
-    break;
-    }
+        if(tenant[i].tenantAddress == msg.sender)
+        {
+            stenant = tenant[i];
+            break;
+        }
    
     }
    
    
-       for(uint k=0; k< flats.length; k++)
-       {
-           if(stenant.startRentRange < flats[k].rentAmount && stenant.endRentRange > flats[k].rentAmount)
-           {
-               searchedFlats[j]=flats[k];
-               j++;
-           }
-       }
-       return searchedFlats;
+    for(uint k=0; k< flats.length; k++)
+     {
+         if(stenant.startRentRange <= flats[k].rentAmount && stenant.endRentRange >= flats[k].rentAmount)
+          {
+              searchedFlats.push(flats[k]);
+          }
+     }
+     
     }
    
     function bookFlat(address fd) public payable {
-    fd.transfer(msg.value);
+        fd.transfer(msg.value);
     }
 }

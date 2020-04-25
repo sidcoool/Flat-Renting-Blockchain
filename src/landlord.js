@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import web3 from './web3'
 import contract from './rent'
+import './CSS/todo.css'
+
+const h={
+    fontSize:'25px',
+    color:'#53adcb'
+}
 
 class Landlord extends Component {
   constructor(props) {
@@ -15,7 +21,7 @@ class Landlord extends Component {
       rentAmount: 313,
       BHK: 2,
       securityFee: 3,
-      negotiable: "yes",
+      negotiable: "no",
     };
   }
 
@@ -90,10 +96,15 @@ class Landlord extends Component {
       negotiable,
     } = this.state;
 
+    if(negotiable == "yes")
+    negotiable = true
+    else
+    negotiable = false
+
     // contract = contract.eth
-    
-    const x = await contract.methods.setFlatInfo(landlordName,email,phoneno,Houseaddress,city,rentAmount,BHK,securityFee,true,true)
-    .send({from: "0xd549b1DFCb6176B92F2CCDe8325C3948ceb0c705"})
+    const accounts = await web3.eth.getAccounts();
+    const x = await contract.methods.setFlatInfo(landlordName,email,phoneno,Houseaddress,city,rentAmount,BHK,securityFee,negotiable)
+    .send({from: accounts[0]})
     // const fl = await contract.methods.flats(0).call();
     console.log(x)
     
@@ -201,7 +212,7 @@ class Landlord extends Component {
         </div>
         <br />
 
-        <button type="submit">Submit</button>
+        <button className="btn btn-success" type="submit">Submit</button>
       </form>
     );
   }
